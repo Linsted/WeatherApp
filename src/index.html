@@ -5,14 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/styles.css" />
-    <title>Check your weather</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>WeatherApp</title>
   </head>
   <body>
     <div class="wrapper__div">
-      <form>
-        <input type="text" name="input" placeholder="Enter your city,please." />
-        <button type="submit">Go</button>
+      <form class="weather__form">
+        <input
+          class="weather__input"
+          type="text"
+          name="input"
+          placeholder="Enter your city,please."
+        />
+        <button class="button-4" role="button" type="submit">Go</button>
       </form>
+      <ul class="weather__list"></ul>
     </div>
 
     <script src="index.js" type="module"></script>
