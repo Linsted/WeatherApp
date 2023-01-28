@@ -2,7 +2,7 @@ import 'animate.css';
 import Notiflix from 'notiflix';
 
 
-console.log(2);
+
 
 
 const refs = {
