@@ -1,4 +1,4 @@
-
+import 'animate.css';
 import Notiflix from 'notiflix';
 
 
@@ -29,11 +29,12 @@ refs.cityList.addEventListener(`click`, onClick);
 
 
 function onClick(evt) {
+    if (evt.target.nodeName !== `BUTTON`) return;
     refs.ul.innerHTML = ``;
     refs.loader.hidden = false;
-    console.log(evt.target.nodeName);
+
     const city = evt.target.textContent;
-    if (evt.target.nodeName !== `BUTTON`) return;
+    
     refs.input.value = city;
     
     fetchForecast(city)
@@ -82,7 +83,7 @@ function fetchForecast(city) {
 
 function markUpWeather({name, weather, main,sys}) {
     markUp =`
-    <li class='weather__item'>
+    <li class='weather__item animate__animated animate__zoomIn'>
         <img class='weather__img' width='150' height='150' src="http://openweathermap.org/img/wn/${weather[0].icon}@2x.png" alt="${weather[0].description}" />
             <h1>${name}, ${sys.country}</h1>
             <p class='weather__temp'> ${Math.ceil(main.temp)}℃</p>
