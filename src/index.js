@@ -2,6 +2,7 @@ import 'animate.css';
 import Notiflix from 'notiflix';
 
 
+console.log(1);
 
 
 
