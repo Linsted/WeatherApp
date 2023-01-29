@@ -2,7 +2,6 @@ import 'animate.css';
 import Notiflix from 'notiflix';
 
 
-console.log(1);
 
 
 
@@ -18,16 +17,13 @@ const refs = {
 let markUp = ``;
 refs.input.value = localStorage.getItem(`city`);
 
-// refs.loader.hidden = false;
+refs.form.addEventListener('submit', onSubmit);
+refs.cityList.addEventListener(`click`, onClick);
 
 
 function addToLocalStorage(city) {
     localStorage.setItem("city", `${city}`);
 }
-
-refs.form.addEventListener('submit', onSubmit);
-refs.cityList.addEventListener(`click`, onClick);
-
 
 function onClick(evt) {
     if (evt.target.nodeName !== `BUTTON`) return;
@@ -68,19 +64,17 @@ function onSubmit(evt) {
         .catch(console.log);
 }
 
-function fetchForecast(city) {
+async function fetchForecast(city) {
 
-    return fetch(`https://api.openweathermap.org/data/2.5/weather?units=metric&q=${city}&appid=4ef0639981daea9d7a2bed8d621b5b88`)
-    .then(response => {
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?units=metric&q=${city}&appid=4ef0639981daea9d7a2bed8d621b5b88`); 
         if (!response.ok) {
-            Notiflix.Notify.warning('We can`t find this city.');
-            refs.loader.hidden = true;
-            throw new Error(error.message)}
-            return response.json()})
-    
+        Notiflix.Notify.warning('We can`t find this city.');
+        refs.loader.hidden = true;
+        throw new Error(error.message)}
+    const data = await response.json()
+    return data;
+
 }
-
-
 
 function markUpWeather({name, weather, main,sys}) {
     markUp =`
